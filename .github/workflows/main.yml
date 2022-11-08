@@ -1,11 +1,13 @@
-name: Context testing
+name: CI
 on: [push]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    name: sosiska blin
+    runs-on: ${{matrix.os}}
     strategy:
       matrix:
+        os: [ubuntu-latest]
         node-version: [19]
     steps:
       - name: Setup Node.js environment
