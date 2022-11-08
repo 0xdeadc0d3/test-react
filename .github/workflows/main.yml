@@ -27,7 +27,7 @@ jobs:
       - name: Run tests
         run: pnpm test
   deploy:
-    needs: build
+    needs: test
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
