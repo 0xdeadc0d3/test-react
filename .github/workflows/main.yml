@@ -2,8 +2,7 @@ name: CI
 on: [push]
 
 jobs:
-  test:
-    name: sosiska blin
+  build:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
@@ -14,3 +13,8 @@ jobs:
         uses: actions/setup-node@v3.5.1
         with:
           node-version: ${{matrix.node-version}}
+      - name: Setup pnpm && install dependencies
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          run_install: true
+      
