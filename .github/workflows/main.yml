@@ -9,13 +9,17 @@ jobs:
         os: [ubuntu-latest]
         node-version: [19]
     steps:
+      - uses: actions/checkout@v3
+      
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
         with:
           node-version: ${{matrix.node-version}}
+          
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
+          
       - name: Install dependencies
         run: pnpm install
