@@ -1,15 +1,16 @@
 name: Run CI
-on: #[push, pull_request]
+on:
   push:
     branches: [master]
   pull_request:
     branches: [master]
 
 jobs:
-  test:
+  run_tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout to master
+        uses: actions/checkout@v3
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
@@ -26,12 +27,13 @@ jobs:
 
       - name: Run tests
         run: pnpm test
-  deploy:
-    needs: test
+  build:
+    needs: run_tests
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout to master
+        uses: actions/checkout@v3
       
-      - name: Test Deployment
-        run: echo TestDeployment message
+      - name: Build Docker image
+        run: docker -t test-react:$(echo $GITHUB_SHA | head -c7) .
