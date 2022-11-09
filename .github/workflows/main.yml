@@ -31,9 +31,10 @@ jobs:
     needs: run_tests
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
-    steps:
-      - name: Checkout to master
-        uses: actions/checkout@v3
-      
+    steps:      
       - name: Build Docker image
-        run: docker build -t test-react:$(echo $GITHUB_SHA | head -c7) .
+        uses: docker/build-push-action@v3
+        with:
+          tags: "test-react:$(echo $GITHUB_SHA | head -c7)"
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
