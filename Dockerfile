@@ -6,7 +6,7 @@ WORKDIR /app
 RUN npm add -g pnpm@latest
 
 # install dependencies
-COPY package.json pnpm-lock.yaml .
+COPY package.json pnpm-lock.yaml ./
 RUN pnpm install
 
 # copy source files and build
