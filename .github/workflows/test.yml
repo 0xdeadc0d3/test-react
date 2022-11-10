@@ -21,6 +21,6 @@ jobs:
         with:
           context: .
           push: false
-          tags: 0xdeadc0d3/app:latest
-          cache-from: type=registry,ref=0xdeadc0d3/app:buildcache
-          cache-to: type=registry,ref=0xdeadc0d3/app:buildcache,mode=max
+          tags: 0xdeadc0d3/test-react:latest
+          cache-from: type=registry,ref=0xdeadc0d3/test-react:buildcache
+          cache-to: type=registry,ref=0xdeadc0d3/test-react:buildcache,mode=max
