@@ -7,12 +7,12 @@ RUN npm add -g pnpm@latest
 
 # install dependencies
 COPY package.json pnpm-lock.yaml ./
-#RUN pnpm install
+RUN pnpm install
 
 # copy source files and build
-#COPY . .
-#RUN pnpm build
+COPY . .
+RUN pnpm build
 
-#FROM nginx:alpine
+FROM nginx:alpine
 
-#COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
