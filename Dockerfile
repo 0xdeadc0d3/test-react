@@ -7,7 +7,7 @@ RUN npm add -g pnpm@latest
 
 # install dependencies
 COPY package.json pnpm-lock.yaml ./
-#RUN pnpm install
+##RUN pnpm install
 
 # copy source files and build
 #COPY . .
