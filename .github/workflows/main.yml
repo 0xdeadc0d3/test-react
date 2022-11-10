@@ -1,10 +1,9 @@
 name: ci
 on:
-  #push:
-  #  branches: [ master ]
-  #pull_request:
-  #  branches: [ master ]
-  workflow_dispatch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   run_tests:
@@ -62,4 +61,3 @@ jobs:
           tags: "${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      
