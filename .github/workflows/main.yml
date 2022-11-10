@@ -32,6 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
+      - name: Set Docker image name
+        run: echo "IMAGE_NAME=$(basename ${{ github.repository }})" >> $GITHUB_ENV
+        
       - name: Set Docker image tag
         run: echo "IMAGE_TAG=$(echo $GITHUB_SHA | head -c7)" >> $GITHUB_ENV
         
@@ -41,6 +44,6 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v3
         with:
-          tags: "test-react:${{ env.IMAGE_TAG }}"
+          tags: "${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
           cache-from: type=gha
           cache-to: type=gha,mode=max
