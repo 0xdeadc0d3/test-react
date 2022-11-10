@@ -47,7 +47,7 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
+          #context: .
           tags: "${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
           cache-from: type=gha
           cache-to: type=gha,mode=max
