@@ -3,9 +3,7 @@
 Dockerfile
 
 # Git directories and files
-.git
-.github
-.gitignore
+.git*
 
 # Logs
 logs
