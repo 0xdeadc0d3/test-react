@@ -67,6 +67,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: "0xdeadc0d3/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
+          tags: "${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
           cache-from: type=registry,ref=0xdeadc0d3/test-react:buildcache
           cache-to: type=registry,ref=0xdeadc0d3/test-react:buildcache,mode=max
