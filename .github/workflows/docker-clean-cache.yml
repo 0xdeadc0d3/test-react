@@ -1,9 +1,0 @@
-name: Docker clean cache
-
-on: workflow_dispatch
-
-jobs:
-  clean:
-    runs-on: ubuntu-latest
-    steps:
-      - run: docker buildx prune --all --force
