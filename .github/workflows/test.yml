@@ -68,5 +68,5 @@ jobs:
           context: .
           push: true
           tags: "${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
-          cache-from: type=registry,ref=0xdeadc0d3/test-react:buildcache
-          cache-to: type=registry,ref=0xdeadc0d3/test-react:buildcache,mode=max
+          cache-from: type=registry,ref=test-react:buildcache
+          cache-to: type=registry,ref=test-react:buildcache,mode=max
