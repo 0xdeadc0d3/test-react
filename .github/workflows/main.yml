@@ -1,4 +1,4 @@
-name: ci
+name: ci__
 on:
   push:
     branches: [ master ]
