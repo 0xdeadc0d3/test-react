@@ -1,3 +1,5 @@
+#trigger: 1
+
 name: ci | registry cache
 on:
   push:
