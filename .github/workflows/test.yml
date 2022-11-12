@@ -67,6 +67,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: "${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}"
-          cache-from: type=registry,ref=test-react:buildcache
-          cache-to: type=registry,ref=test-react:buildcache,mode=max
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:buildcache,mode=max
