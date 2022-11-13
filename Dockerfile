@@ -1,13 +1,13 @@
 FROM node:19-alpine as builder
 
 #install curl
-RUN apk --no-cache add curl
+#RUN apk --no-cache add curl
 
 # install pnpm
-RUN curl -fsSL \
-    "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" \
-    -o /bin/pnpm; chmod +x /bin/pnpm
-    
+#RUN curl -fsSL \
+#    "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" \
+#    -o /bin/pnpm; chmod +x /bin/pnpm
+RUN npm add -g pnpm
 WORKDIR /app
 
 # install dependencies
