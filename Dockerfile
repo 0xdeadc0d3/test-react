@@ -8,11 +8,11 @@ FROM node:19-alpine as builder
 #    "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" \
 #    -o /bin/pnpm; chmod +x /bin/pnpm
 WORKDIR /app
-RUN npm add -g pnpm
+RUN npm add -g pnpm@latest
 
 # install dependencies
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 # copy source files and build
 COPY . .
