@@ -4,9 +4,6 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-    
-env:
-  IMAGE_REPO: "0xdeadc0d3/test-react"
 
 jobs:
   run_tests:
@@ -49,11 +46,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       
-      #- name: Build and push
-      #  uses: docker/build-push-action@v3
-      #  with:
-      #    context: .
-      #    push: true
-      #    tags: test-react:latest
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: test-react:latest
       #    cache-from: type=registry,ref=test-react:buildcache
       #    cache-to: type=registry,ref=test-react:buildcache,mode=max
