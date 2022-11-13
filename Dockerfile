@@ -3,7 +3,7 @@ FROM node:19-alpine as builder
 WORKDIR /app
 
 # Install pnpm
-RUN wget -qO- https://get.pnpm.io/install.sh | sh -
+RUN npm install -g pnpm
 
 # Fetch packages from a lockfile into virtual store
 COPY pnpm-lock.yaml .
