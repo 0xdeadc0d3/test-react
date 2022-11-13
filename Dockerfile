@@ -2,8 +2,7 @@ FROM node:19-alpine as builder
 
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm
+RUN corepack enable
 
 # Fetch packages from a lockfile into virtual store
 COPY pnpm-lock.yaml .
