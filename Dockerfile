@@ -1,6 +1,7 @@
 FROM node:19-alpine as builder
 
 WORKDIR /app
+COPY pnpm-lock.yaml .
 
 # Install curl
 RUN apk --no-cache add curl
@@ -11,12 +12,10 @@ RUN curl -fsSL \
     -o /bin/pnpm; chmod +x /bin/pnpm;
 
 # Fetch packages from a lockfile into virtual store
-COPY pnpm-lock.yaml .
 RUN pnpm fetch
 
-COPY . .
-
 # Install all dependencies from virtual store and build
+COPY . .
 RUN pnpm install -r --offline
 RUN pnpm build
 
