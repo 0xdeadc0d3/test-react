@@ -2,20 +2,22 @@ FROM node:19-alpine as builder
 
 WORKDIR /app
 
-# install curl
+# Install curl
 RUN apk --no-cache add curl
 
-# install pnpm
+# Install pnpm
 RUN curl -fsSL \
     "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" \
-    -o /bin/pnpm; chmod +x /bin/pnpm
+    -o /bin/pnpm; chmod +x /bin/pnpm;
 
-# install dependencies
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install
+# Fetch packages from a lockfile into virtual store
+COPY pnpm-lock.yaml .
+RUN pnpm fetch
 
-# copy source files and build
 COPY . .
+
+# Install all dependencies from virtual store and build
+RUN pnpm install -r --offline
 RUN pnpm build
 
 FROM nginx:alpine
