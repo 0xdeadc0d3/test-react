@@ -1,11 +1,14 @@
 FROM node:19-alpine as builder
 
-WORKDIR /app
+#install curl
+RUN apk --no-cache add curl
 
 # install pnpm
 RUN curl -fsSL \
     "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" \
-    -o /bin/pnpm && chmod +x /bin/pnpm
+    -o /bin/pnpm; chmod +x /bin/pnpm
+    
+WORKDIR /app
 
 # install dependencies
 COPY package.json pnpm-lock.yaml ./
