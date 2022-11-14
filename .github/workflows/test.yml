@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
+        with:
+          version: latest
       - name: Install Vercel CLI
         run: npm install --global vercel@canary
       - name: Pull Vercel Environment Information
